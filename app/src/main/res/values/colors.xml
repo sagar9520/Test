@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <!-- X-ray scanner dark palette (contract colors). -->
+    <color name="xr_bg">#0B1220</color>
+    <color name="xr_surface">#121A2B</color>
+    <color name="xr_surface_high">#1A2438</color>
+    <color name="xr_outline">#2A3650</color>
+    <color name="xr_primary">#22D3EE</color>
+    <color name="xr_on_primary">#04111A</color>
+    <color name="xr_secondary">#A78BFA</color>
+    <color name="xr_text">#E6EDF7</color>
+    <color name="xr_text_muted">#9FB0C8</color>
+    <color name="xr_ad_badge">#F59E0B</color>
+    <color name="xr_on_ad_badge">#1A1200</color>
+    <color name="xr_selected">#0E3A47</color>
+
+    <!-- Supporting tones (derived from the palette above). -->
+    <color name="xr_on_secondary">#1C1236</color>
+    <color name="xr_secondary_container">#2A2150</color>
+    <color name="xr_placeholder_stroke">#33415C</color>
 </resources>

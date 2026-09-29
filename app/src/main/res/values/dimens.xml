@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="xr_screen_padding">20dp</dimen>
+    <dimen name="xr_gap_small">12dp</dimen>
+    <dimen name="xr_gap_section">24dp</dimen>
+    <!-- Space between the last content element and the native ad (>= 24dp avoids accidental clicks). -->
+    <dimen name="xr_gap_ad">32dp</dimen>
+
+    <dimen name="xr_radius_card">20dp</dimen>
+    <dimen name="xr_radius_hero">24dp</dimen>
+    <dimen name="xr_radius_ad">16dp</dimen>
+    <dimen name="xr_radius_button">16dp</dimen>
+
+    <dimen name="xr_option_min_height">88dp</dimen>
+    <dimen name="xr_tile_min_height">176dp</dimen>
+    <dimen name="xr_icon_circle">52dp</dimen>
+    <dimen name="xr_icon_circle_large">72dp</dimen>
+    <dimen name="xr_touch_target">48dp</dimen>
+    <dimen name="xr_primary_button_height">56dp</dimen>
+    <dimen name="xr_hero_height">180dp</dimen>
+
+    <!-- Native ad template (view_native_ad_medium): media area and the reserved placeholder.
+         Placeholder = card padding 12+12 + header 40 + 8 + body (2 lines) ~40 + 8 + media 180 + 10 + CTA 48
+         ~= 358dp, so the ad replaces the placeholder without moving anything below it. -->
+    <dimen name="xr_native_media_height">180dp</dimen>
+    <dimen name="xr_native_placeholder_height">356dp</dimen>
+</resources>

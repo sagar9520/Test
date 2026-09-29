@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Large answer card for question screens: icon in a tinted circle, title, description, chevron.
+     The whole card is the touch target (min 88dp high). -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.XRay.Card.Option"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/xr_option_min_height"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <FrameLayout
+            android:layout_width="@dimen/xr_icon_circle"
+            android:layout_height="@dimen/xr_icon_circle"
+            android:background="@drawable/bg_icon_circle">
+
+            <ImageView
+                android:id="@+id/option_icon"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                app:tint="@color/xr_primary"
+                tools:src="@drawable/ic_hand" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/option_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.XRay.Title"
+                tools:text="Hand" />
+
+            <TextView
+                android:id="@+id/option_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textAppearance="@style/TextAppearance.XRay.Body"
+                tools:text="27 bones, from wrist to fingertips" />
+
+            <TextView
+                android:id="@+id/option_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_chip_watch_ad"
+                android:drawablePadding="6dp"
+                android:gravity="center_vertical"
+                android:paddingStart="8dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="4dp"
+                android:text="@string/watch_ad_chip"
+                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                android:textColor="@color/xr_text"
+                android:visibility="gone"
+                app:drawableStartCompat="@drawable/ic_play_ad"
+                app:drawableTint="@color/xr_secondary"
+                tools:visibility="visible" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_chevron_right"
+            app:tint="@color/xr_text_muted" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

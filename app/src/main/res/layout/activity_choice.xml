@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Screen type B: two big side-by-side tiles. ONE native below them (replaces the old 3 natives),
+     anchored banner at the bottom outside the scroll view. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/xr_bg"
+    android:orientation="vertical"
+    tools:context=".ui.ChoiceActivity">
+
+    <include
+        layout="@layout/view_step_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/xr_screen_padding"
+            android:paddingTop="16dp"
+            android:paddingEnd="@dimen/xr_screen_padding"
+            android:paddingBottom="@dimen/xr_gap_section">
+
+            <TextView
+                android:id="@+id/choice_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.XRay.Headline"
+                tools:text="Select skeleton model" />
+
+            <TextView
+                android:id="@+id/choice_subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textAppearance="@style/TextAppearance.XRay.Body"
+                tools:text="Male and female skeletons differ mainly in the pelvis." />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/xr_gap_section"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/choice_a"
+                    layout="@layout/view_choice_tile"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <include
+                    android:id="@+id/choice_b"
+                    layout="@layout/view_choice_tile"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/xr_gap_small"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <include
+                android:id="@+id/native_slot"
+                layout="@layout/view_native_ad_slot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/xr_gap_ad" />
+
+            <include
+                android:id="@+id/fact_card"
+                layout="@layout/view_fact_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/xr_gap_section" />
+
+            <TextView
+                android:id="@+id/disclaimer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="@string/disclaimer"
+                android:textAppearance="@style/TextAppearance.XRay.Caption" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <FrameLayout
+        android:id="@+id/banner_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/xr_surface" />
+</LinearLayout>

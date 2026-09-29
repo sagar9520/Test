@@ -1,22 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.apkglobal.test">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Ads need network. The AppLovin SDK merges its own permissions too; declaring them is harmless. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name=".XRayApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".home"></activity>
-        <activity android:name=".MainActivity">
+        android:theme="@style/Theme.XRay">
+
+        <!-- REQUIRED by the Google (AdMob) adapter, otherwise the app crashes at start.
+             Value comes from local.properties "admob.app.id" (see app/build.gradle). -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="${admobAppId}" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.QuestionActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.ChoiceActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.ScanReadyActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

@@ -1,18 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Home: hero card, one big "Start scan" button, disclaimer, ONE native below, fact card,
+     anchored banner at the bottom. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/xr_bg"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        app:title="@string/app_name"
+        app:titleTextAppearance="@style/TextAppearance.XRay.ToolbarTitle"
+        app:titleTextColor="@color/xr_text" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/xr_screen_padding"
+            android:paddingTop="8dp"
+            android:paddingEnd="@dimen/xr_screen_padding"
+            android:paddingBottom="@dimen/xr_gap_section">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/xr_radius_hero">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/xr_hero_height"
+                        android:background="@drawable/bg_scan_grid"
+                        android:contentDescription="@string/cd_hero"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/img_xray_hero" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingStart="20dp"
+                        android:paddingTop="16dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="16dp">
+
+                        <TextView
+                            android:id="@+id/home_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/home_title"
+                            android:textAppearance="@style/TextAppearance.XRay.Headline" />
+
+                        <TextView
+                            android:id="@+id/home_promise"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="@string/home_promise"
+                            android:textAppearance="@style/TextAppearance.XRay.Body" />
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/home_features"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            app:chipSpacingHorizontal="8dp"
+                            app:chipSpacingVertical="0dp">
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/home_feature_steps"
+                                style="@style/Widget.XRay.Chip.Info"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:chipIcon="@drawable/ic_bolt"
+                                tools:text="6 quick steps" />
+
+                            <com.google.android.material.chip.Chip
+                                style="@style/Widget.XRay.Chip.Info"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/home_feature_target"
+                                app:chipIcon="@drawable/ic_hand" />
+
+                            <com.google.android.material.chip.Chip
+                                style="@style/Widget.XRay.Chip.Info"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/home_feature_style"
+                                app:chipIcon="@drawable/ic_sparkle" />
+                        </com.google.android.material.chip.ChipGroup>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/start_button"
+                style="@style/Widget.XRay.Button.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/start_scan"
+                app:icon="@drawable/ic_bolt" />
+
+            <TextView
+                android:id="@+id/disclaimer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="@string/disclaimer"
+                android:textAppearance="@style/TextAppearance.XRay.Caption" />
+
+            <include
+                android:id="@+id/native_slot"
+                layout="@layout/view_native_ad_slot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/xr_gap_ad" />
+
+            <include
+                android:id="@+id/fact_card"
+                layout="@layout/view_fact_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/xr_gap_section" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <FrameLayout
+        android:id="@+id/banner_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/xr_surface" />
+</LinearLayout>

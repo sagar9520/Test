@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One native ad slot per screen, always BELOW the content with a large gap.
+     The "Sponsored" label sits outside the ad; the placeholder reserves the ad's height so nothing jumps
+     under the user's finger. NativeAdController hides the whole slot if no ad arrives in time. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/native_ad_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="6dp"
+        android:text="@string/native_sponsored"
+        android:textAppearance="@style/TextAppearance.XRay.Overline" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/native_ad_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/xr_native_placeholder_height"
+            android:background="@drawable/bg_placeholder"
+            android:importantForAccessibility="no" />
+
+        <FrameLayout
+            android:id="@+id/native_ad_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </FrameLayout>
+</LinearLayout>

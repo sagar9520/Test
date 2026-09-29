@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Simple full-body skeleton: skull + spine, ribs, arms, pelvis and legs as rounded strokes. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M12,1.5a2.75,2.75 0,1 1,0 5.5a2.75,2.75 0,1 1,0 -5.5z" />
+    <path
+        android:pathData="M12,7.6V16.4M7.5,8.9H16.5M7.5,8.9L5.6,14.6M16.5,8.9L18.4,14.6M9,11.2H15M9,13.4H15M9.6,16.4H14.4M10.3,16.6L9.4,22.4M13.7,16.6L14.6,22.4"
+        android:strokeWidth="1.6"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+</vector>

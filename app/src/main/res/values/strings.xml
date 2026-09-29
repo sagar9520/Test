@@ -1,3 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Test</string>
+    <!-- Brand name: kept the same in every language. -->
+    <string name="app_name" translatable="false">Prank X-Ray Scanner</string>
+
+    <!-- ===== Common ===== -->
+    <string name="cd_back">Back</string>
+    <string name="step_label">Step %1$d of %2$d</string>
+    <string name="step_label_ready">All set: ready to scan</string>
+    <string name="fact_title">Did you know?</string>
+    <string name="disclaimer">For entertainment only. This app shows a simulated X-ray effect; it is not a real X-ray or medical device.</string>
+    <string name="watch_ad_chip">Watch ad</string>
+
+    <!-- ===== Ads (labels required by ad networks) ===== -->
+    <string name="native_sponsored">Sponsored</string>
+    <string name="native_ad_badge">Ad</string>
+
+    <!-- ===== Home ===== -->
+    <string name="home_title">X-Ray Scanner</string>
+    <string name="home_promise">Create a fun skeleton X-ray effect in a few quick taps.</string>
+    <plurals name="home_feature_steps">
+        <item quantity="one">%1$d quick step</item>
+        <item quantity="other">%1$d quick steps</item>
+    </plurals>
+    <string name="home_feature_target">Hand or full skeleton</string>
+    <string name="home_feature_style">Classic or neon</string>
+    <string name="start_scan">Start scan</string>
+    <string name="cd_hero">Illustration of hand bones on an X-ray scan grid</string>
+
+    <!-- ===== Step 1: what to scan ===== -->
+    <string name="q_target_title">What do you want to scan?</string>
+    <string name="q_target_subtitle">Pick the X-ray effect to show in the scanner.</string>
+    <string name="opt_hand_title">Hand</string>
+    <string name="opt_hand_desc">27 bones, from wrist to fingertips</string>
+    <string name="opt_body_title">Full body skeleton</string>
+    <string name="opt_body_desc">All 206 bones, head to toe</string>
+
+    <!-- ===== Step 2: skeleton model (skeleton-only wording) ===== -->
+    <string name="q_model_title">Select skeleton model</string>
+    <string name="q_model_subtitle">Male and female skeletons differ mainly in the pelvis.</string>
+    <string name="opt_male_title">Male</string>
+    <string name="opt_male_desc">Narrower, heart-shaped pelvis</string>
+    <string name="opt_female_title">Female</string>
+    <string name="opt_female_desc">Wider, rounder pelvis</string>
+
+    <!-- ===== Step 3: scan style ===== -->
+    <string name="q_style_title">Choose scan style</string>
+    <string name="q_style_subtitle">How should your X-ray look?</string>
+    <string name="opt_classic_title">Classic X-ray</string>
+    <string name="opt_classic_desc">Black and white film look</string>
+    <string name="opt_neon_title">Neon glow</string>
+    <string name="opt_neon_desc">Glowing cyan bones on a dark screen</string>
+
+    <!-- ===== Step 4: detailed analysis (rewarded) ===== -->
+    <string name="q_detail_title">Would you like a detailed bone analysis?</string>
+    <string name="q_detail_subtitle">Adds bone names and fun facts to your scan.</string>
+    <string name="opt_detailed_title">Yes, detailed</string>
+    <string name="opt_detailed_desc">Bone names and extra facts after a short ad</string>
+    <string name="opt_quick_title">No, quick scan</string>
+    <string name="opt_quick_desc">Start the effect right away</string>
+
+    <!-- ===== Step 5: camera ===== -->
+    <string name="q_camera_title">Which camera?</string>
+    <string name="q_camera_subtitle">The X-ray effect is drawn over the camera preview.</string>
+    <string name="opt_back_cam_title">Back camera</string>
+    <string name="opt_back_cam_desc">Point it at your hand</string>
+    <string name="opt_front_cam_title">Front camera</string>
+    <string name="opt_front_cam_desc">Selfie view</string>
+
+    <!-- ===== Step 6: sound ===== -->
+    <string name="q_sound_title">Scanner sound effects?</string>
+    <string name="q_sound_subtitle">Play scanner sounds while the effect runs.</string>
+    <string name="opt_sound_on_title">On (beep + hum)</string>
+    <string name="opt_sound_on_desc">Feels like a real scanner</string>
+    <string name="opt_sound_off_title">Off (silent)</string>
+    <string name="opt_sound_off_desc">No sounds at all</string>
+
+    <!-- ===== Summary chips on the Ready screen ===== -->
+    <string name="sum_hand">Hand</string>
+    <string name="sum_body">Full skeleton</string>
+    <string name="sum_male">Male skeleton</string>
+    <string name="sum_female">Female skeleton</string>
+    <string name="sum_classic">Classic X-ray</string>
+    <string name="sum_neon">Neon glow</string>
+    <string name="sum_detailed">Detailed analysis</string>
+    <string name="sum_quick">Quick scan</string>
+    <string name="sum_back_cam">Back camera</string>
+    <string name="sum_front_cam">Front camera</string>
+    <string name="sum_sound_on">Sound on</string>
+    <string name="sum_sound_off">Silent</string>
+
+    <!-- ===== Ready screen ===== -->
+    <string name="ready_title">Your scan is ready</string>
+    <string name="ready_subtitle">Here is your setup. Go back if you want to change an answer.</string>
+    <string name="ready_setup_label">Your setup</string>
+    <string name="hd_title">HD scan</string>
+    <string name="hd_desc">Sharper bones and an extra glow. Watch a short ad to unlock it.</string>
+    <string name="hd_button">Watch ad to unlock</string>
+    <string name="hd_unlocked">HD unlocked</string>
+    <string name="restart">Start over</string>
+    <string name="scanner_opening">Scanner opening… (connect your camera screen here)</string>
+    <string name="detail_not_unlocked">Detailed analysis was not unlocked, so we switched to a quick scan.</string>
+    <string name="hd_not_unlocked">HD was not unlocked. You can try again.</string>
+
+    <!-- ===== True X-ray and skeleton facts ===== -->
+    <string name="fact_hand_bones">Each human hand has 27 bones: 8 in the wrist, 5 in the palm and 14 in the fingers.</string>
+    <string name="fact_pelvis">A female pelvis is usually wider and rounder than a male pelvis, with a larger opening that helps in childbirth.</string>
+    <string name="fact_white_bones">Bones look white on an X-ray because the calcium in them absorbs more X-rays than soft tissue does.</string>
+    <string name="fact_bone_count">An adult skeleton has about 206 bones. A newborn baby has around 270, and many of them fuse together while growing up.</string>
+    <string name="fact_wavelength">X-rays are a kind of light we cannot see. Their wavelength is about 0.01 to 10 nanometres, far shorter than visible light.</string>
+    <string name="fact_roentgen">Wilhelm Röntgen discovered X-rays in 1895. One of the first X-ray photos showed his wife\'s hand, wearing her ring.</string>
+    <string name="fact_nobel">Röntgen won the very first Nobel Prize in Physics, in 1901, for discovering X-rays.</string>
+    <string name="fact_stapes">The smallest bone in your body is the stapes, inside the middle ear. It is only about 3 mm long.</string>
+    <string name="fact_femur">The femur (thigh bone) is the longest and strongest bone in the human body.</string>
 </resources>

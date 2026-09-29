@@ -1,29 +1,94 @@
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.application'
+}
+
+// Secrets stay out of git: put them in local.properties (already git-ignored)
+//   applovin.sdk.key=YOUR_REAL_SDK_KEY
+//   admob.app.id=ca-app-pub-XXXXXXXXXXXXXXXX~YYYYYYYYYY
+// or pass -PAPPLOVIN_SDK_KEY=... / -PADMOB_APP_ID=... on CI.
+def localProps = new Properties()
+def localPropsFile = rootProject.file('local.properties')
+if (localPropsFile.exists()) {
+    localPropsFile.withInputStream { localProps.load(it) }
+}
+
+def appLovinSdkKey = (localProps.getProperty('applovin.sdk.key')
+        ?: project.findProperty('APPLOVIN_SDK_KEY')
+        ?: 'YOUR_APPLOVIN_SDK_KEY').toString().trim()
+
+// Google's public SAMPLE AdMob app id. REPLACE with your own before release: the Google adapter
+// crashes the app at start if this meta-data is missing, and sample ids earn nothing.
+def adMobAppId = (localProps.getProperty('admob.app.id')
+        ?: project.findProperty('ADMOB_APP_ID')
+        ?: 'ca-app-pub-3940256099942544~3347511713').toString().trim()
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.1"
+    namespace = 'com.apkglobal.test'
+    compileSdk = 36
+
     defaultConfig {
-        applicationId "com.apkglobal.test"
-        minSdkVersion 15
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        applicationId = 'com.apkglobal.test'
+        // AppLovin SDK 13.6.x requires minSdk 24.
+        minSdk = 24
+        // Play requires API 36 for new apps/updates (since 31 Aug 2026).
+        targetSdk = 36
+        versionCode = 2
+        versionName = '2.0'
+
+        testInstrumentationRunner = 'androidx.test.runner.AndroidJUnitRunner'
+
+        buildConfigField 'String', 'APPLOVIN_SDK_KEY',
+                "\"${appLovinSdkKey.replace('\\', '\\\\').replace('"', '\\"')}\""
+        manifestPlaceholders = [admobAppId: adMobAppId]
     }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled = false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
+    // ProcessLifecycleOwner: app-open ads on return from background.
+    implementation 'androidx.lifecycle:lifecycle-process:2.8.7'
+
+    // AppLovin MAX + bidders. Keep adapter versions in sync with the MAX Integration Manager.
+    implementation 'com.applovin:applovin-sdk:13.6.4'
+    implementation 'com.applovin.mediation:google-adapter:25.5.0.0'   // Google bidding + AdMob
+    implementation 'com.applovin.mediation:facebook-adapter:6.22.0.0' // Meta Audience Network
+
+    // More bidders for India — uncomment ONLY after enabling the network in the MAX dashboard
+    // (every extra bidder in the auction raises the clearing price; an adapter without an
+    // enabled network only adds APK size).
+    // implementation 'com.applovin.mediation:inmobi-adapter:11.4.1.3'
+    // implementation 'com.applovin.mediation:vungle-adapter:7.7.8.1'        // Liftoff Monetize
+    // implementation 'com.applovin.mediation:mintegral-adapter:17.1.81.0'   // needs Mintegral repo in settings.gradle
+    // implementation 'com.applovin.mediation:fyber-adapter:8.4.7.0'         // DT Exchange
+    // implementation 'com.applovin.mediation:moloco-adapter:4.12.0.0'
+    // implementation 'com.applovin.mediation:bidmachine-adapter:3.8.0.0'
+    // implementation 'com.applovin.mediation:yandex-adapter:8.5.0.0'
+    // implementation 'com.applovin.mediation:pubmatic-adapter:5.4.1.0'
+    // implementation 'com.applovin.mediation:chartboost-adapter:9.14.1.1'
+    // implementation 'com.applovin.mediation:ironsource-adapter:9.6.0.0.0'
+    // implementation 'com.applovin.mediation:unityads-adapter:4.20.1.0'     // re-check version in Integration Manager
+
+    testImplementation 'junit:junit:4.13.2'
+
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test:runner:1.6.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
 }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Reserved space for the native ad while it loads (keeps the layout from jumping). -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/xr_surface" />
+    <stroke
+        android:width="1dp"
+        android:color="@color/xr_placeholder_stroke"
+        android:dashWidth="6dp"
+        android:dashGap="4dp" />
+    <corners android:radius="@dimen/xr_radius_ad" />
+</shape>

@@ -1,13 +1,13 @@
 package com.apkglobal.test;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
- * Example local unit test, which will execute on the development machine (host).
+ * Local unit test (runs on the development machine, no device needed).
  *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+ * @see <a href="https://developer.android.com/training/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
     @Test

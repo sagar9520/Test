@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared step header: toolbar + "Step n of N" + progress bar. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="8dp">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        app:navigationContentDescription="@string/cd_back"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:title="@string/app_name"
+        app:titleTextAppearance="@style/TextAppearance.XRay.ToolbarTitle"
+        app:titleTextColor="@color/xr_text" />
+
+    <TextView
+        android:id="@+id/step_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/xr_screen_padding"
+        android:layout_marginEnd="@dimen/xr_screen_padding"
+        android:layout_marginBottom="8dp"
+        android:textAppearance="@style/TextAppearance.XRay.Label"
+        tools:text="Step 1 of 6" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/step_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/xr_screen_padding"
+        android:layout_marginEnd="@dimen/xr_screen_padding"
+        android:importantForAccessibility="no"
+        app:indicatorColor="@color/xr_primary"
+        app:trackColor="@color/xr_outline"
+        app:trackCornerRadius="3dp"
+        app:trackThickness="6dp" />
+</LinearLayout>

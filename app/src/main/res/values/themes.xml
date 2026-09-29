@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App theme: dark "x-ray scanner" look on top of Material 3. -->
+    <style name="Theme.XRay" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/xr_primary</item>
+        <item name="colorOnPrimary">@color/xr_on_primary</item>
+        <item name="colorPrimaryContainer">@color/xr_selected</item>
+        <item name="colorOnPrimaryContainer">@color/xr_text</item>
+        <item name="colorSecondary">@color/xr_secondary</item>
+        <item name="colorOnSecondary">@color/xr_on_secondary</item>
+        <item name="colorSecondaryContainer">@color/xr_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/xr_text</item>
+        <item name="colorTertiary">@color/xr_ad_badge</item>
+        <item name="colorOnTertiary">@color/xr_on_ad_badge</item>
+
+        <item name="android:colorBackground">@color/xr_bg</item>
+        <item name="colorOnBackground">@color/xr_text</item>
+        <item name="colorSurface">@color/xr_surface</item>
+        <item name="colorOnSurface">@color/xr_text</item>
+        <item name="colorSurfaceVariant">@color/xr_surface_high</item>
+        <item name="colorOnSurfaceVariant">@color/xr_text_muted</item>
+        <item name="colorSurfaceContainerLowest">@color/xr_bg</item>
+        <item name="colorSurfaceContainerLow">@color/xr_surface</item>
+        <item name="colorSurfaceContainer">@color/xr_surface</item>
+        <item name="colorSurfaceContainerHigh">@color/xr_surface_high</item>
+        <item name="colorSurfaceContainerHighest">@color/xr_surface_high</item>
+        <item name="colorOutline">@color/xr_outline</item>
+        <item name="colorOutlineVariant">@color/xr_outline</item>
+
+        <item name="android:windowBackground">@color/xr_bg</item>
+        <!-- Edge-to-edge: bars are drawn over our background; every screen pads its root (ui/Insets). -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <item name="materialCardViewStyle">@style/Widget.XRay.Card</item>
+    </style>
+
+    <!-- ===== Typography (Material 3 type scale + palette colors) ===== -->
+    <style name="TextAppearance.XRay.ToolbarTitle" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textColor">@color/xr_text</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.XRay.Headline" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:textColor">@color/xr_text</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.XRay.TitleLarge" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textColor">@color/xr_text</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.XRay.Title" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textColor">@color/xr_text</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.XRay.Body" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">@color/xr_text_muted</item>
+    </style>
+
+    <style name="TextAppearance.XRay.BodyStrong" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">@color/xr_text</item>
+    </style>
+
+    <style name="TextAppearance.XRay.Caption" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:textColor">@color/xr_text_muted</item>
+    </style>
+
+    <style name="TextAppearance.XRay.Label" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:textColor">@color/xr_primary</item>
+    </style>
+
+    <style name="TextAppearance.XRay.Overline" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:textColor">@color/xr_text_muted</item>
+    </style>
+
+    <style name="TextAppearance.XRay.Button" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- ===== Cards ===== -->
+    <!-- Content card (options, tiles, facts, hero). -->
+    <style name="Widget.XRay.Card" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">@color/xr_surface</item>
+        <item name="cardCornerRadius">@dimen/xr_radius_card</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeColor">@color/xr_outline</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <!-- Tappable answer card / tile. -->
+    <style name="Widget.XRay.Card.Option">
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <!-- Fun-fact card: secondary (purple) accent. -->
+    <style name="Widget.XRay.Card.Fact">
+        <item name="cardBackgroundColor">@color/xr_bg</item>
+        <item name="strokeColor">@color/xr_secondary_container</item>
+    </style>
+
+    <!-- Reward / premium card. -->
+    <style name="Widget.XRay.Card.Premium">
+        <item name="strokeColor">@color/xr_secondary</item>
+    </style>
+
+    <!-- Native ad card: a different surface + smaller radius so ads never look like answer cards. -->
+    <style name="Widget.XRay.Card.Ad">
+        <item name="cardBackgroundColor">@color/xr_surface_high</item>
+        <item name="cardCornerRadius">@dimen/xr_radius_ad</item>
+        <item name="strokeColor">@color/xr_outline</item>
+    </style>
+
+    <!-- ===== Buttons ===== -->
+    <style name="Widget.XRay.Button.Primary" parent="Widget.Material3.Button">
+        <item name="android:minHeight">@dimen/xr_primary_button_height</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">@dimen/xr_radius_button</item>
+        <item name="android:textAppearance">@style/TextAppearance.XRay.Button</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">10dp</item>
+    </style>
+
+    <style name="Widget.XRay.Button.Tonal" parent="Widget.Material3.Button.TonalButton">
+        <item name="android:minHeight">@dimen/xr_touch_target</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="iconGravity">textStart</item>
+    </style>
+
+    <style name="Widget.XRay.Button.Text" parent="Widget.Material3.Button.TextButton">
+        <item name="android:minHeight">@dimen/xr_touch_target</item>
+        <item name="iconGravity">textStart</item>
+    </style>
+
+    <!-- Native ad call-to-action: full width, 48dp, primary colors. -->
+    <style name="Widget.XRay.Button.AdCta" parent="Widget.Material3.Button">
+        <item name="android:minHeight">@dimen/xr_touch_target</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="backgroundTint">@color/xr_primary</item>
+        <item name="android:textColor">@color/xr_on_primary</item>
+        <item name="android:textAppearance">@style/TextAppearance.XRay.Button</item>
+    </style>
+
+    <!-- ===== Chips (read-only info pills) ===== -->
+    <style name="Widget.XRay.Chip.Info" parent="Widget.Material3.Chip.Assist">
+        <item name="chipBackgroundColor">@color/xr_surface_high</item>
+        <item name="chipStrokeColor">@color/xr_outline</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="chipIconVisible">true</item>
+        <item name="chipIconSize">18dp</item>
+        <item name="chipIconTint">@color/xr_primary</item>
+        <item name="android:textColor">@color/xr_text</item>
+        <item name="android:checkable">false</item>
+        <item name="android:clickable">false</item>
+        <item name="android:focusable">false</item>
+    </style>
+
+    <!-- ===== Shapes ===== -->
+    <style name="ShapeAppearance.XRay.AdIcon" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10dp</item>
+    </style>
+
+</resources>

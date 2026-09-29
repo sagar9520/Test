@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== सामान्य ===== -->
+    <string name="cd_back">वापस</string>
+    <string name="step_label">चरण %1$d / %2$d</string>
+    <string name="step_label_ready">सब तैयार: स्कैन शुरू करें</string>
+    <string name="fact_title">क्या आप जानते हैं?</string>
+    <string name="disclaimer">सिर्फ़ मनोरंजन के लिए। यह ऐप केवल एक्स-रे जैसा इफ़ेक्ट दिखाता है; यह असली एक्स-रे या मेडिकल उपकरण नहीं है।</string>
+    <string name="watch_ad_chip">विज्ञापन देखें</string>
+
+    <!-- ===== विज्ञापन लेबल ===== -->
+    <string name="native_sponsored">प्रायोजित</string>
+    <string name="native_ad_badge">विज्ञापन</string>
+
+    <!-- ===== होम ===== -->
+    <string name="home_title">एक्स-रे स्कैनर</string>
+    <string name="home_promise">बस कुछ टैप में मज़ेदार कंकाल वाला एक्स-रे इफ़ेक्ट बनाएँ।</string>
+    <plurals name="home_feature_steps">
+        <item quantity="one">%1$d आसान चरण</item>
+        <item quantity="other">%1$d आसान चरण</item>
+    </plurals>
+    <string name="home_feature_target">हाथ या पूरा कंकाल</string>
+    <string name="home_feature_style">क्लासिक या नियॉन</string>
+    <string name="start_scan">स्कैन शुरू करें</string>
+    <string name="cd_hero">एक्स-रे स्कैन ग्रिड पर हाथ की हड्डियों का चित्र</string>
+
+    <!-- ===== चरण 1 ===== -->
+    <string name="q_target_title">आप क्या स्कैन करना चाहते हैं?</string>
+    <string name="q_target_subtitle">चुनें कि स्कैनर में कौन-सा एक्स-रे इफ़ेक्ट दिखे।</string>
+    <string name="opt_hand_title">हाथ</string>
+    <string name="opt_hand_desc">कलाई से उंगलियों के सिरे तक 27 हड्डियाँ</string>
+    <string name="opt_body_title">पूरा कंकाल</string>
+    <string name="opt_body_desc">सिर से पैर तक सभी 206 हड्डियाँ</string>
+
+    <!-- ===== चरण 2 ===== -->
+    <string name="q_model_title">कंकाल मॉडल चुनें</string>
+    <string name="q_model_subtitle">पुरुष और महिला के कंकाल में मुख्य अंतर श्रोणि (पेल्विस) की हड्डी में होता है।</string>
+    <string name="opt_male_title">पुरुष</string>
+    <string name="opt_male_desc">संकरी, दिल के आकार की श्रोणि</string>
+    <string name="opt_female_title">महिला</string>
+    <string name="opt_female_desc">ज़्यादा चौड़ी और गोल श्रोणि</string>
+
+    <!-- ===== चरण 3 ===== -->
+    <string name="q_style_title">स्कैन स्टाइल चुनें</string>
+    <string name="q_style_subtitle">आपका एक्स-रे कैसा दिखना चाहिए?</string>
+    <string name="opt_classic_title">क्लासिक एक्स-रे</string>
+    <string name="opt_classic_desc">ब्लैक एंड व्हाइट फ़िल्म जैसा लुक</string>
+    <string name="opt_neon_title">नियॉन ग्लो</string>
+    <string name="opt_neon_desc">गहरी स्क्रीन पर चमकती नीली हड्डियाँ</string>
+
+    <!-- ===== चरण 4 ===== -->
+    <string name="q_detail_title">क्या आप हड्डियों का विस्तृत विश्लेषण चाहते हैं?</string>
+    <string name="q_detail_subtitle">आपके स्कैन में हड्डियों के नाम और मज़ेदार तथ्य जुड़ जाएँगे।</string>
+    <string name="opt_detailed_title">हाँ, विस्तृत</string>
+    <string name="opt_detailed_desc">एक छोटे विज्ञापन के बाद हड्डियों के नाम और ज़्यादा तथ्य</string>
+    <string name="opt_quick_title">नहीं, क्विक स्कैन</string>
+    <string name="opt_quick_desc">इफ़ेक्ट तुरंत शुरू करें</string>
+
+    <!-- ===== चरण 5 ===== -->
+    <string name="q_camera_title">कौन-सा कैमरा?</string>
+    <string name="q_camera_subtitle">एक्स-रे इफ़ेक्ट कैमरा प्रीव्यू के ऊपर दिखाया जाता है।</string>
+    <string name="opt_back_cam_title">पीछे का कैमरा</string>
+    <string name="opt_back_cam_desc">इसे अपने हाथ की ओर करें</string>
+    <string name="opt_front_cam_title">सामने का कैमरा</string>
+    <string name="opt_front_cam_desc">सेल्फ़ी व्यू</string>
+
+    <!-- ===== चरण 6 ===== -->
+    <string name="q_sound_title">स्कैनर की आवाज़ें चाहिए?</string>
+    <string name="q_sound_subtitle">इफ़ेक्ट चलते समय स्कैनर जैसी आवाज़ें बजें।</string>
+    <string name="opt_sound_on_title">चालू (बीप + गूँज)</string>
+    <string name="opt_sound_on_desc">बिल्कुल असली स्कैनर जैसा अनुभव</string>
+    <string name="opt_sound_off_title">बंद (साइलेंट)</string>
+    <string name="opt_sound_off_desc">कोई आवाज़ नहीं</string>
+
+    <!-- ===== तैयार स्क्रीन के चिप ===== -->
+    <string name="sum_hand">हाथ</string>
+    <string name="sum_body">पूरा कंकाल</string>
+    <string name="sum_male">पुरुष कंकाल</string>
+    <string name="sum_female">महिला कंकाल</string>
+    <string name="sum_classic">क्लासिक एक्स-रे</string>
+    <string name="sum_neon">नियॉन ग्लो</string>
+    <string name="sum_detailed">विस्तृत विश्लेषण</string>
+    <string name="sum_quick">क्विक स्कैन</string>
+    <string name="sum_back_cam">पीछे का कैमरा</string>
+    <string name="sum_front_cam">सामने का कैमरा</string>
+    <string name="sum_sound_on">आवाज़ चालू</string>
+    <string name="sum_sound_off">साइलेंट</string>
+
+    <!-- ===== तैयार स्क्रीन ===== -->
+    <string name="ready_title">आपका स्कैन तैयार है</string>
+    <string name="ready_subtitle">यह रहा आपका सेटअप। कोई जवाब बदलना हो तो वापस जाएँ।</string>
+    <string name="ready_setup_label">आपका सेटअप</string>
+    <string name="hd_title">HD स्कैन</string>
+    <string name="hd_desc">ज़्यादा साफ़ हड्डियाँ और एक्स्ट्रा ग्लो। अनलॉक करने के लिए एक छोटा विज्ञापन देखें।</string>
+    <string name="hd_button">विज्ञापन देखकर अनलॉक करें</string>
+    <string name="hd_unlocked">HD अनलॉक हो गया</string>
+    <string name="restart">फिर से शुरू करें</string>
+    <string name="scanner_opening">स्कैनर खुल रहा है… (अपनी कैमरा स्क्रीन यहाँ जोड़ें)</string>
+    <string name="detail_not_unlocked">विस्तृत विश्लेषण अनलॉक नहीं हुआ, इसलिए क्विक स्कैन चुना गया है।</string>
+    <string name="hd_not_unlocked">HD अनलॉक नहीं हुआ। आप फिर से कोशिश कर सकते हैं।</string>
+
+    <!-- ===== सच्चे तथ्य ===== -->
+    <string name="fact_hand_bones">इंसान के हर हाथ में 27 हड्डियाँ होती हैं: कलाई में 8, हथेली में 5 और उंगलियों में 14।</string>
+    <string name="fact_pelvis">महिला की श्रोणि आम तौर पर पुरुष की तुलना में ज़्यादा चौड़ी और गोल होती है। इसका बड़ा खुला भाग प्रसव में मदद करता है।</string>
+    <string name="fact_white_bones">एक्स-रे में हड्डियाँ सफ़ेद दिखती हैं, क्योंकि उनमें मौजूद कैल्शियम नरम ऊतकों की तुलना में ज़्यादा एक्स-रे सोखता है।</string>
+    <string name="fact_bone_count">एक वयस्क के कंकाल में लगभग 206 हड्डियाँ होती हैं। नवजात शिशु में लगभग 270 होती हैं, जिनमें से कई बड़े होते-होते आपस में जुड़ जाती हैं।</string>
+    <string name="fact_wavelength">एक्स-रे एक तरह का प्रकाश है जिसे हम देख नहीं सकते। इसकी तरंगदैर्ध्य लगभग 0.01 से 10 नैनोमीटर होती है, जो दिखने वाले प्रकाश से बहुत छोटी है।</string>
+    <string name="fact_roentgen">विल्हेम रॉन्टगन ने 1895 में एक्स-रे की खोज की थी। सबसे पहली एक्स-रे तस्वीरों में से एक में उनकी पत्नी का अंगूठी पहना हुआ हाथ दिखा था।</string>
+    <string name="fact_nobel">एक्स-रे की खोज के लिए रॉन्टगन को 1901 में भौतिकी का सबसे पहला नोबेल पुरस्कार मिला था।</string>
+    <string name="fact_stapes">आपके शरीर की सबसे छोटी हड्डी स्टेपीज़ है, जो मध्य कान में होती है। यह सिर्फ़ लगभग 3 मिमी लंबी होती है।</string>
+    <string name="fact_femur">फ़ीमर (जांघ की हड्डी) मानव शरीर की सबसे लंबी और सबसे मज़बूत हड्डी है।</string>
+</resources>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Screen type A: question with two large answer cards.
+     Order: header -> question -> 2 options -> (32dp gap) -> ONE native -> fact -> disclaimer.
+     Anchored banner lives OUTSIDE the scroll view, at the very bottom. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/xr_bg"
+    android:orientation="vertical"
+    tools:context=".ui.QuestionActivity">
+
+    <include
+        layout="@layout/view_step_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/xr_screen_padding"
+            android:paddingTop="16dp"
+            android:paddingEnd="@dimen/xr_screen_padding"
+            android:paddingBottom="@dimen/xr_gap_section">
+
+            <TextView
+                android:id="@+id/question_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.XRay.Headline"
+                tools:text="What do you want to scan?" />
+
+            <TextView
+                android:id="@+id/question_subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textAppearance="@style/TextAppearance.XRay.Body"
+                tools:text="Pick the X-ray effect to show in the scanner." />
+
+            <include
+                android:id="@+id/option_a"
+                layout="@layout/view_option_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/xr_gap_section" />
+
+            <include
+                android:id="@+id/option_b"
+                layout="@layout/view_option_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/xr_gap_small" />
+
+            <include
+                android:id="@+id/native_slot"
+                layout="@layout/view_native_ad_slot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/xr_gap_ad" />
+
+            <include
+                android:id="@+id/fact_card"
+                layout="@layout/view_fact_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/xr_gap_section" />
+
+            <TextView
+                android:id="@+id/disclaimer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="@string/disclaimer"
+                android:textAppearance="@style/TextAppearance.XRay.Caption" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Anchored adaptive banner (BannerController sizes it); GONE when banners are off. -->
+    <FrameLayout
+        android:id="@+id/banner_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/xr_surface" />
+</LinearLayout>

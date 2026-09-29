@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Big square-ish tile for two-choice screens (two tiles side by side). -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.XRay.Card.Option"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:minHeight="@dimen/xr_tile_min_height"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <FrameLayout
+            android:layout_width="@dimen/xr_icon_circle_large"
+            android:layout_height="@dimen/xr_icon_circle_large"
+            android:background="@drawable/bg_icon_circle">
+
+            <ImageView
+                android:id="@+id/choice_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                app:tint="@color/xr_primary"
+                tools:src="@drawable/ic_male" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/choice_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.XRay.TitleLarge"
+            tools:text="Male" />
+
+        <TextView
+            android:id="@+id/choice_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:textAppearance="@style/TextAppearance.XRay.Caption"
+            tools:text="Narrower, heart-shaped pelvis" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

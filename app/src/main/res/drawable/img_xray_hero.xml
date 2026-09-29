@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Hero illustration: stylised hand bones on an X-ray scan grid with a scanning beam.
+     Built only from straight rounded strokes and circles so it stays light and crisp at any size. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp"
+    android:height="200dp"
+    android:viewportWidth="320"
+    android:viewportHeight="200">
+
+    <!-- Scan grid -->
+    <path
+        android:pathData="M20,0V200M40,0V200M60,0V200M80,0V200M100,0V200M120,0V200M140,0V200M160,0V200M180,0V200M200,0V200M220,0V200M240,0V200M260,0V200M280,0V200M300,0V200M0,20H320M0,40H320M0,60H320M0,80H320M0,100H320M0,120H320M0,140H320M0,160H320M0,180H320"
+        android:strokeWidth="1"
+        android:strokeAlpha="0.10"
+        android:strokeColor="#22D3EE" />
+
+    <!-- Viewfinder corners -->
+    <path
+        android:pathData="M24,44V24H44M276,24H296V44M296,156V176H276M44,176H24V156"
+        android:strokeWidth="3"
+        android:strokeAlpha="0.9"
+        android:strokeColor="#22D3EE"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+
+    <!-- Beam halo -->
+    <path
+        android:fillAlpha="0.10"
+        android:fillColor="#22D3EE"
+        android:pathData="M24,98H296V130H24z" />
+
+    <!-- Hand bones, nudged right so the whole hand (incl. thumb) sits centred. -->
+    <group android:translateX="6">
+
+        <!-- Bone glow (wide, faint copy of the bones) -->
+        <path
+            android:pathData="M146,198L148,172M174,198L171,172M137,150L119,128M150,144L143,101M160,142L160,97M170,144L177,101M180,148L193,111M142,94L138,72M137,66L135,52M134,46L133,38M160,90L160,66M160,60L160,45M160,39L160,30M178,94L182,72M183,66L185,52M186,46L187,38M195,104L201,87M203,81L206,70M207,64L209,57M116,123L104,109M100,104L92,94"
+            android:strokeWidth="15"
+            android:strokeAlpha="0.16"
+            android:strokeColor="#22D3EE"
+            android:strokeLineCap="round" />
+
+        <!-- Bones: forearm, metacarpals and finger bones (with joint gaps) -->
+        <path
+            android:pathData="M146,198L148,172M174,198L171,172M137,150L119,128M150,144L143,101M160,142L160,97M170,144L177,101M180,148L193,111M142,94L138,72M137,66L135,52M134,46L133,38M160,90L160,66M160,60L160,45M160,39L160,30M178,94L182,72M183,66L185,52M186,46L187,38M195,104L201,87M203,81L206,70M207,64L209,57M116,123L104,109M100,104L92,94"
+            android:strokeWidth="7"
+            android:strokeColor="#E6F7FF"
+            android:strokeLineCap="round" />
+
+        <!-- Wrist (carpal) bones -->
+        <path
+            android:fillColor="#E6F7FF"
+            android:pathData="M143,161a5,5 0,1 0,10 0a5,5 0,1 0,-10 0zM152,156a5,5 0,1 0,10 0a5,5 0,1 0,-10 0zM161,156a5,5 0,1 0,10 0a5,5 0,1 0,-10 0zM170,161a5,5 0,1 0,10 0a5,5 0,1 0,-10 0zM147,151a4.5,4.5 0,1 0,9 0a4.5,4.5 0,1 0,-9 0zM165,151a4.5,4.5 0,1 0,9 0a4.5,4.5 0,1 0,-9 0z" />
+
+    </group>
+
+    <!-- Scanning beam -->
+    <path
+        android:fillAlpha="0.85"
+        android:fillColor="#22D3EE"
+        android:pathData="M24,112H296V116H24z" />
+</vector>

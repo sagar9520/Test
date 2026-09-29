@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AppLovin MAX manual native template (medium). View ids are bound in ads/NativeAdController.
+     Visually distinct from answer cards (raised surface, smaller radius, amber "Ad" badge, AdChoices)
+     so users never tap an ad by mistake. -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.XRay.Card.Ad"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <!-- Header: icon | title + advertiser/rating | Ad badge | AdChoices -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="40dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/native_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@color/xr_bg"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.XRay.AdIcon" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/native_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+                    android:textColor="@color/xr_text"
+                    android:textStyle="bold"
+                    tools:text="Advertiser app name" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/native_advertiser"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textAppearance="@style/TextAppearance.XRay.Caption"
+                        tools:text="Advertiser" />
+
+                    <FrameLayout
+                        android:id="@+id/native_star_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/native_ad_badge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_ad_badge"
+                android:paddingStart="6dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="6dp"
+                android:paddingBottom="2dp"
+                android:text="@string/native_ad_badge"
+                android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                android:textColor="@color/xr_on_ad_badge"
+                android:textStyle="bold" />
+
+            <FrameLayout
+                android:id="@+id/native_options"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/native_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textAppearance="@style/TextAppearance.XRay.BodyStrong"
+            tools:text="Ad body text goes here and can take up to two lines of space in this layout." />
+
+        <FrameLayout
+            android:id="@+id/native_media"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/xr_native_media_height"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_native_media" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/native_cta"
+            style="@style/Widget.XRay.Button.AdCta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            tools:text="Install" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
