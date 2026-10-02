@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#0FB5A3</color>
+    <color name="colorPrimaryDark">#0A8F84</color>
+    <color name="colorAccent">#0FB5A3</color>
+
+    <!-- Brand -->
+    <color name="brand_teal">#0FB5A3</color>
+    <color name="brand_teal_dark">#0A9488</color>
+    <color name="brand_teal_start">#16C9AF</color>
+    <color name="brand_teal_end">#0B9C94</color>
+    <color name="brand_teal_soft">#EAF9F6</color>
+    <color name="brand_teal_halo">#330FB5A3</color>
+
+    <!-- Surfaces -->
+    <color name="page_bg_top">#F8FBFE</color>
+    <color name="page_bg_bottom">#ECF2F8</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="card_stroke">#E2E9F1</color>
+
+    <!-- Text -->
+    <color name="text_primary">#0F1B2D</color>
+    <color name="text_secondary">#5B6B7F</color>
+    <color name="text_tertiary">#8C99AA</color>
+    <color name="text_on_brand">#FFFFFF</color>
+
+    <!-- Controls -->
+    <color name="radio_off">#C3CDD9</color>
+    <color name="progress_track">#DCE4ED</color>
+    <color name="ripple_teal">#260FB5A3</color>
+    <color name="ripple_on_brand">#40FFFFFF</color>
+    <color name="ripple_neutral">#140F1B2D</color>
+
+    <!-- Ads -->
+    <color name="ad_surface">#EEF3F8</color>
+    <color name="ad_stroke">#DFE7F0</color>
+    <color name="ad_badge">#3B7BF6</color>
+    <color name="ad_cta_start">#5490FF</color>
+    <color name="ad_cta_end">#3366EE</color>
+    <color name="ad_media_bg">#E3EAF2</color>
+    <color name="skeleton">#DCE4ED</color>
 </resources>

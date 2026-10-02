@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Loading skeleton with exactly the same geometry as ad_native_large.xml, so the
+    Continue button below the native ad does not jump when the ad arrives.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/native_placeholder"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_ad_card"
+    android:importantForAccessibility="noHideDescendants"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <TextView
+        style="@style/Xray.Ad.Badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/native_placeholder_shimmer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <View
+                style="@style/Xray.Ad.Skeleton"
+                android:layout_width="@dimen/native_icon_size"
+                android:layout_height="@dimen/native_icon_size" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <View
+                    style="@style/Xray.Ad.Skeleton"
+                    android:layout_width="170dp"
+                    android:layout_height="14dp"
+                    android:layout_marginTop="2dp" />
+
+                <View
+                    style="@style/Xray.Ad.Skeleton"
+                    android:layout_width="96dp"
+                    android:layout_height="11dp"
+                    android:layout_marginTop="9dp" />
+
+                <View
+                    style="@style/Xray.Ad.Skeleton"
+                    android:layout_width="match_parent"
+                    android:layout_height="11dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginBottom="2dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/native_media_height"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_skeleton">
+
+            <TextView
+                style="@style/Xray.Ad.Meta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/ad_loading"
+                android:textColor="@color/text_tertiary" />
+        </FrameLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/native_cta_height"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_skeleton_pill" />
+    </LinearLayout>
+
+</LinearLayout>

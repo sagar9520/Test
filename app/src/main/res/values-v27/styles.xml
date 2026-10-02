@@ -1,0 +1,7 @@
+<resources>
+
+    <style name="Theme.XrayScanner" parent="Theme.XrayScanner.Base">
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+
+</resources>

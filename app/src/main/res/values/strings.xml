@@ -1,3 +1,115 @@
 <resources>
     <string name="app_name">Test</string>
+
+    <!-- Common onboarding -->
+    <string name="step_counter">%1$d/%2$d</string>
+    <string name="cd_step_progress">Step %1$d of %2$d</string>
+    <string name="cd_back">Back</string>
+    <string name="action_continue">Continue</string>
+
+    <!-- Ads -->
+    <string name="ad_badge">Ad</string>
+    <string name="ad_sponsored">Sponsored</string>
+    <string name="ad_sponsored_separator"> • Sponsored</string>
+    <string name="ad_loading">Loading ad…</string>
+
+    <!-- 1/5 Select Language -->
+    <string name="language_title">Select Language</string>
+    <string name="language_subtitle">Choose your preferred language for the app.\nMenus, scan tips and result labels will appear in this language.</string>
+    <string name="language_english">English</string>
+    <string name="language_english_desc">Default language with full app support.</string>
+    <string name="language_hindi">Hindi</string>
+    <string name="language_hindi_desc">Easy-to-use Hindi interface and guidance.</string>
+    <string name="language_spanish">Spanish</string>
+    <string name="language_spanish_desc">Spanish labels and scan instructions.</string>
+    <string name="language_portuguese">Portuguese</string>
+    <string name="language_portuguese_desc">Portuguese interface with localized tips.</string>
+    <string name="language_arabic">Arabic</string>
+    <string name="language_arabic_desc">Arabic menus and right-to-left friendly labels.</string>
+    <string name="language_indonesian">Indonesian</string>
+    <string name="language_indonesian_desc">Localized Indonesian app navigation.</string>
+    <string name="language_bengali">Bengali</string>
+    <string name="language_bengali_desc">Bengali instructions and option labels.</string>
+    <string name="language_turkish">Turkish</string>
+    <string name="language_turkish_desc">Turkish language support for easier use.</string>
+
+    <!-- 2/5 Select Scan Mode -->
+    <string name="mode_title">Select Scan Mode</string>
+    <string name="mode_subtitle">Choose the scan mode you want to use.\nEach mode gives a different X-ray effect.</string>
+    <string name="mode_classic_xray">Classic X-Ray</string>
+    <string name="mode_classic_xray_desc">Realistic X-ray effect with clear details.</string>
+    <string name="mode_green_scan">Green Scan</string>
+    <string name="mode_green_scan_desc">Neon green visual effect with high contrast.</string>
+    <string name="mode_blue_scan">Blue Scan</string>
+    <string name="mode_blue_scan_desc">Cool blue effect with smooth details.</string>
+    <string name="mode_gray_scale">Gray Scale</string>
+    <string name="mode_gray_scale_desc">Black &amp; white medical style view.</string>
+    <string name="mode_neon_scan">Neon Scan</string>
+    <string name="mode_neon_scan_desc">Futuristic neon effect with sharp edges.</string>
+    <string name="mode_thermal_view">Thermal View</string>
+    <string name="mode_thermal_view_desc">Heat map style body scan simulation.</string>
+    <string name="mode_edge_highlight">Edge Highlight</string>
+    <string name="mode_edge_highlight_desc">Highlight body edges for better structure.</string>
+    <string name="mode_deep_scan">Deep Scan</string>
+    <string name="mode_deep_scan_desc">Advanced scan with maximum details.</string>
+
+    <!-- 3/5 Select Display Style -->
+    <string name="style_title">Select Display Style</string>
+    <string name="style_subtitle">Choose how your X-ray result should appear.\nEach style changes the look of the final scan preview.</string>
+    <string name="style_medical_film">Medical Film</string>
+    <string name="style_medical_film_desc">Clean diagnostic-style display with crisp bone tones.</string>
+    <string name="style_glow_outline">Glow Outline</string>
+    <string name="style_glow_outline_desc">Bright edge glow around bones and body structure.</string>
+    <string name="style_night_contrast">Night Contrast</string>
+    <string name="style_night_contrast_desc">Dark background with stronger white highlights.</string>
+    <string name="style_soft_transparent">Soft Transparent</string>
+    <string name="style_soft_transparent_desc">Smooth translucent body effect with softer contrast.</string>
+    <string name="style_neon_outline">Neon Outline</string>
+    <string name="style_neon_outline_desc">Futuristic neon edge rendering for a vivid look.</string>
+    <string name="style_heat_map">Heat Map Style</string>
+    <string name="style_heat_map_desc">Warm-to-cool color mapping for a dramatic display.</string>
+    <string name="style_bone_highlight">Bone Highlight</string>
+    <string name="style_bone_highlight_desc">Emphasizes bones while reducing soft-body detail.</string>
+    <string name="style_classic_report">Classic Report</string>
+    <string name="style_classic_report_desc">Balanced scan preview with a simple report-style finish.</string>
+
+    <!-- 4/5 Select Scan Quality -->
+    <string name="quality_title">Select Scan Quality</string>
+    <string name="quality_subtitle">Choose the level of scan detail you want.\nHigher quality gives richer effects but may take longer.</string>
+    <string name="quality_quick">Quick Scan</string>
+    <string name="quality_quick_desc">Fastest scan with basic visual output.</string>
+    <string name="quality_standard">Standard Scan</string>
+    <string name="quality_standard_desc">Balanced speed and visual quality.</string>
+    <string name="quality_hd">HD Scan</string>
+    <string name="quality_hd_desc">Sharper output with better clarity.</string>
+    <string name="quality_deep">Deep Scan</string>
+    <string name="quality_deep_desc">Maximum simulated detail for richer visuals.</string>
+    <string name="quality_smooth">Smooth Mode</string>
+    <string name="quality_smooth_desc">Cleaner lines with softer transitions.</string>
+    <string name="quality_high_detail">High Detail</string>
+    <string name="quality_high_detail_desc">Extra edge and bone definition.</string>
+    <string name="quality_auto">Auto Quality</string>
+    <string name="quality_auto_desc">App chooses the best quality automatically.</string>
+    <string name="quality_battery_saver">Battery Saver</string>
+    <string name="quality_battery_saver_desc">Lighter quality mode for lower power use.</string>
+
+    <!-- 5/5 Select Result View -->
+    <string name="view_title">Select Result View</string>
+    <string name="view_subtitle">Choose how you want your final scan result to be shown.\nDifferent views help you compare and inspect details.</string>
+    <string name="view_full_screen">Full Screen</string>
+    <string name="view_full_screen_desc">Show the complete result in one clear view.</string>
+    <string name="view_split">Split View</string>
+    <string name="view_split_desc">See two result panels side by side.</string>
+    <string name="view_zoom">Zoom View</string>
+    <string name="view_zoom_desc">Magnify key areas for close inspection.</string>
+    <string name="view_compare">Compare View</string>
+    <string name="view_compare_desc">Compare two scan looks in the same screen.</string>
+    <string name="view_detail">Detail View</string>
+    <string name="view_detail_desc">Focus on one area with extra detail.</string>
+    <string name="view_highlight">Highlight View</string>
+    <string name="view_highlight_desc">Emphasize edges and important structures.</string>
+    <string name="view_before_after">Before/After</string>
+    <string name="view_before_after_desc">Switch between original and enhanced styles.</string>
+    <string name="view_auto_rotate">Auto Rotate</string>
+    <string name="view_auto_rotate_desc">Rotate result automatically for better fit.</string>
 </resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Page: ads use the full content width (10dp from the screen edges, like the reference
+         video); option cards, title and Continue are inset a little more (16dp from the edges). -->
+    <dimen name="ad_padding_h">10dp</dimen>
+    <dimen name="option_inset_h">6dp</dimen>
+
+    <!-- Option cards -->
+    <dimen name="option_spacing">10dp</dimen>
+    <dimen name="option_min_height">70dp</dimen>
+    <dimen name="option_radius">16dp</dimen>
+    <dimen name="thumb_width">64dp</dimen>
+    <dimen name="thumb_height">46dp</dimen>
+    <dimen name="radio_size">24dp</dimen>
+
+    <!-- Continue button -->
+    <dimen name="continue_height">52dp</dimen>
+    <dimen name="continue_radius">26dp</dimen>
+
+    <!-- Native ad (fixed size, matches the reference) -->
+    <dimen name="ad_card_radius">16dp</dimen>
+    <dimen name="native_icon_size">48dp</dimen>
+    <dimen name="native_media_height">120dp</dimen>
+    <dimen name="native_cta_height">44dp</dimen>
+
+    <!-- Banner ad card -->
+    <dimen name="banner_card_radius">12dp</dimen>
+    <dimen name="banner_placeholder_height">64dp</dimen>
+</resources>

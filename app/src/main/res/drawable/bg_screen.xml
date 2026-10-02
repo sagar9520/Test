@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:endColor="@color/page_bg_bottom"
+                android:startColor="@color/page_bg_top"
+                android:type="linear" />
+        </shape>
+    </item>
+    <!-- Soft teal glow behind the header for a premium feel. -->
+    <item android:gravity="top" android:height="260dp">
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:endColor="#000FB5A3"
+                android:startColor="#140FB5A3"
+                android:type="linear" />
+        </shape>
+    </item>
+</layer-list>

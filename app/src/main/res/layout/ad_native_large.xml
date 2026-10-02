@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Native advanced ad, styled after the reference video:
+    "Ad" badge, icon + headline + advertiser + body, 120dp media, full-width call to action.
+    The AdChoices icon is placed by the SDK in the top-right corner (kept free on purpose).
+-->
+<com.google.android.gms.ads.nativead.NativeAdView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/native_ad_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_ad_card"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/ad_badge"
+            style="@style/Xray.Ad.Badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ad_app_icon"
+                android:layout_width="@dimen/native_icon_size"
+                android:layout_height="@dimen/native_icon_size"
+                android:adjustViewBounds="true"
+                android:background="@drawable/bg_ad_icon"
+                android:scaleType="centerCrop"
+                tools:ignore="ContentDescription" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/ad_headline"
+                    style="@style/Xray.Ad.Headline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Premium Shows At Just ₹1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/ad_advertiser"
+                        style="@style/Xray.Ad.Meta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        tools:text="StoryTV" />
+
+                    <TextView
+                        android:id="@+id/ad_sponsored"
+                        style="@style/Xray.Ad.Meta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ad_sponsored_separator" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/ad_body"
+                    style="@style/Xray.Ad.Meta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    tools:text="Experience gripping short series with a special ₹1 offer" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.google.android.gms.ads.nativead.MediaView
+            android:id="@+id/ad_media"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/native_media_height"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_ad_media" />
+
+        <Button
+            android:id="@+id/ad_call_to_action"
+            style="@style/Xray.Ad.CallToAction"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/native_cta_height"
+            android:layout_marginTop="10dp"
+            tools:text="Subscribe" />
+
+    </LinearLayout>
+
+</com.google.android.gms.ads.nativead.NativeAdView>

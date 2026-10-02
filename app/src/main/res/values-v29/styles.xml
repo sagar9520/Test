@@ -1,0 +1,10 @@
+<resources>
+
+    <style name="Theme.XrayScanner" parent="Theme.XrayScanner.Base">
+        <item name="android:windowLightNavigationBar">true</item>
+        <!-- Keep the transparent navigation bar clean (no system scrim) on button navigation. -->
+        <item name="android:enforceNavigationBarContrast">false</item>
+        <item name="android:enforceStatusBarContrast">false</item>
+    </style>
+
+</resources>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Shared layout for the 5 onboarding selection screens.
+    The option cards, the native ad (+ Continue button right below it) and the in-list banners
+    are added from code by BaseSelectionActivity, based on each screen's ScreenSpec.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_screen"
+    android:orientation="vertical"
+    tools:context=".onboarding.LanguageActivity">
+
+    <!-- Header: back button, step progress, step counter -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="12dp"
+        android:paddingEnd="18dp">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_icon_button"
+            android:contentDescription="@string/cd_back"
+            android:scaleType="center"
+            android:src="@drawable/ic_arrow_back" />
+
+        <com.apkglobal.test.onboarding.StepIndicatorView
+            android:id="@+id/step_indicator"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/step_counter"
+            style="@style/Xray.Text.StepCounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
+            tools:text="1/5" />
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:overScrollMode="ifContentScrolls"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/ad_padding_h"
+            android:paddingTop="6dp"
+            android:paddingEnd="@dimen/ad_padding_h"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:id="@+id/screen_title"
+                style="@style/Xray.Text.ScreenTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/option_inset_h"
+                android:layout_marginEnd="@dimen/option_inset_h"
+                android:accessibilityHeading="true"
+                tools:text="@string/language_title" />
+
+            <TextView
+                android:id="@+id/screen_subtitle"
+                style="@style/Xray.Text.ScreenSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/option_inset_h"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="@dimen/option_inset_h"
+                tools:text="@string/language_subtitle" />
+
+            <LinearLayout
+                android:id="@+id/options_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:orientation="vertical" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Fixed bottom banner (same size as the in-list banners). -->
+    <include
+        android:id="@+id/bottom_banner_slot"
+        layout="@layout/view_banner_ad_slot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/ad_padding_h"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="@dimen/ad_padding_h"
+        android:layout_marginBottom="6dp" />
+
+</LinearLayout>

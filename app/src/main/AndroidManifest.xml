@@ -1,22 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.apkglobal.test">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".home"></activity>
-        <activity android:name=".MainActivity">
+
+        <!-- AdMob app id (test id in res/values/ads.xml - replace before publishing). -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/admob_app_id" />
+
+        <!-- Onboarding: 1 Language -> 2 Scan Mode -> 3 Display Style -> 4 Scan Quality -> 5 Result View -->
+        <activity
+            android:name=".onboarding.LanguageActivity"
+            android:exported="true"
+            android:theme="@style/Theme.XrayScanner">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".onboarding.ScanModeActivity"
+            android:exported="false"
+            android:theme="@style/Theme.XrayScanner" />
+        <activity
+            android:name=".onboarding.DisplayStyleActivity"
+            android:exported="false"
+            android:theme="@style/Theme.XrayScanner" />
+        <activity
+            android:name=".onboarding.ScanQualityActivity"
+            android:exported="false"
+            android:theme="@style/Theme.XrayScanner" />
+        <activity
+            android:name=".onboarding.ResultViewActivity"
+            android:exported="false"
+            android:theme="@style/Theme.XrayScanner" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".home"
+            android:exported="false" />
     </application>
 
 </manifest>
