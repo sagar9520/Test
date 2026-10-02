@@ -115,4 +115,14 @@
     <string name="view_before_after_desc">Switch between original and enhanced styles.</string>
     <string name="view_auto_rotate">Auto Rotate</string>
     <string name="view_auto_rotate_desc">Rotate result automatically for better fit.</string>
+
+    <!-- Ad countdown -->
+    <string name="countdown_badge">Ad</string>
+    <string name="countdown_unit">SEC</string>
+    <plurals name="countdown_title">
+        <item quantity="one">Ad starts in %d second</item>
+        <item quantity="other">Ad starts in %d seconds</item>
+    </plurals>
+    <string name="countdown_subtitle">A short ad keeps all X-ray tools free for you.</string>
+    <string name="countdown_remove_ads">Remove ads</string>
 </resources>

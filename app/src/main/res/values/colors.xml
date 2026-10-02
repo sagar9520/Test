@@ -42,4 +42,17 @@
     <color name="ad_cta_end">#3366EE</color>
     <color name="ad_media_bg">#E3EAF2</color>
     <color name="skeleton">#DCE4ED</color>
+
+    <!-- Ad countdown (shown before an interstitial) -->
+    <color name="countdown_scrim">#D9030812</color>
+    <color name="countdown_card_start">#13233F</color>
+    <color name="countdown_card_end">#08111F</color>
+    <color name="countdown_card_stroke">#3322D3EE</color>
+    <color name="countdown_track">#1FFFFFFF</color>
+    <color name="countdown_ring_start">#16C9AF</color>
+    <color name="countdown_ring_end">#7CFFF0</color>
+    <color name="countdown_text_secondary">#A9BCD0</color>
+    <color name="countdown_gold">#FFC94D</color>
+    <color name="countdown_gold_bg">#1FFFC94D</color>
+    <color name="countdown_gold_stroke">#59FFC94D</color>
 </resources>

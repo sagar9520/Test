@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="16dp"
+    android:height="16dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="@color/countdown_gold"
+        android:pathData="M3,7.5 L7.5,11 L12,4.5 L16.5,11 L21,7.5 L19,18 L5,18 Z" />
+    <path
+        android:fillColor="@color/countdown_gold"
+        android:pathData="M5,19.5 L19,19.5 L19,21 L5,21 Z" />
+</vector>
