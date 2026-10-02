@@ -26,28 +26,35 @@ import com.google.android.gms.ads.nativead.NativeAdView;
 
 /**
  * Loads one native advanced ad into a slot (view_native_ad_slot.xml).
- * Shows a same-size loading skeleton meanwhile, collapses the slot if no ad is available and
- * destroys the ad together with the activity.
+ * Shows a same-size loading skeleton meanwhile, hands the slot back to the screen if no ad is
+ * available and destroys the ad together with the activity.
  */
 public final class NativeAdController implements DefaultLifecycleObserver {
 
     private final AppCompatActivity activity;
     private final ViewGroup slot;
     private final String adUnitId;
+    private final Runnable onNoAd;
 
     private NativeAd nativeAd;
     private ObjectAnimator shimmer;
     private boolean destroyed;
 
-    private NativeAdController(AppCompatActivity activity, ViewGroup slot, String adUnitId) {
+    private NativeAdController(AppCompatActivity activity, ViewGroup slot, String adUnitId, Runnable onNoAd) {
         this.activity = activity;
         this.slot = slot;
         this.adUnitId = adUnitId;
+        this.onNoAd = onNoAd;
     }
 
-    /** Starts loading immediately; the controller follows the activity lifecycle by itself. */
-    public static NativeAdController attach(AppCompatActivity activity, ViewGroup slot, String adUnitId) {
-        NativeAdController controller = new NativeAdController(activity, slot, adUnitId);
+    /**
+     * Starts loading immediately; the controller follows the activity lifecycle by itself.
+     *
+     * @param onNoAd called on the main thread if no ad could be loaded for this slot
+     */
+    public static NativeAdController attach(AppCompatActivity activity, ViewGroup slot, String adUnitId,
+                                            Runnable onNoAd) {
+        NativeAdController controller = new NativeAdController(activity, slot, adUnitId, onNoAd);
         activity.getLifecycle().addObserver(controller);
         controller.load();
         return controller;
@@ -56,6 +63,12 @@ public final class NativeAdController implements DefaultLifecycleObserver {
     private void load() {
         startShimmer();
         final AppCompatActivity context = activity;
+        // The SDK pins AdChoices to an absolute corner: keep it opposite the "Ad" badge, which
+        // follows the layout direction (top-left badge in LTR, top-right badge in RTL).
+        final int adChoicesPlacement =
+                activity.getResources().getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL
+                        ? NativeAdOptions.ADCHOICES_TOP_LEFT
+                        : NativeAdOptions.ADCHOICES_TOP_RIGHT;
         // Building the AdLoader is recommended off the main thread; callbacks arrive on the main thread.
         new Thread(() -> {
             AdLoader adLoader = new AdLoader.Builder(context, adUnitId)
@@ -69,7 +82,7 @@ public final class NativeAdController implements DefaultLifecycleObserver {
                         }
                     })
                     .withNativeAdOptions(new NativeAdOptions.Builder()
-                            .setAdChoicesPlacement(NativeAdOptions.ADCHOICES_TOP_RIGHT)
+                            .setAdChoicesPlacement(adChoicesPlacement)
                             .setMediaAspectRatio(NativeAdOptions.NATIVE_MEDIA_ASPECT_RATIO_LANDSCAPE)
                             .setVideoOptions(new VideoOptions.Builder().setStartMuted(true).build())
                             .build())
@@ -117,14 +130,15 @@ public final class NativeAdController implements DefaultLifecycleObserver {
         adView.setIconView(icon);
         adView.setMediaView(media);
 
-        // Headline and media content are guaranteed by the SDK; the rest is optional.
+        // Headline and media content are guaranteed by the SDK; the rest is optional. Missing
+        // assets are hidden with INVISIBLE so the card keeps the skeleton's exact size.
         headline.setText(ad.getHeadline());
         if (ad.getMediaContent() != null) {
             media.setMediaContent(ad.getMediaContent());
         }
 
         if (ad.getBody() == null) {
-            body.setVisibility(View.GONE);
+            body.setVisibility(View.INVISIBLE);
         } else {
             body.setText(ad.getBody());
             body.setVisibility(View.VISIBLE);
@@ -140,14 +154,14 @@ public final class NativeAdController implements DefaultLifecycleObserver {
         }
 
         if (ad.getCallToAction() == null) {
-            callToAction.setVisibility(View.GONE);
+            callToAction.setVisibility(View.INVISIBLE);
         } else {
             callToAction.setText(ad.getCallToAction());
             callToAction.setVisibility(View.VISIBLE);
         }
 
         if (ad.getIcon() == null || ad.getIcon().getDrawable() == null) {
-            icon.setVisibility(View.GONE);
+            icon.setVisibility(View.INVISIBLE);
         } else {
             icon.setImageDrawable(ad.getIcon().getDrawable());
             icon.setVisibility(View.VISIBLE);
@@ -159,8 +173,7 @@ public final class NativeAdController implements DefaultLifecycleObserver {
 
     private void collapse() {
         stopShimmer();
-        slot.removeAllViews();
-        slot.setVisibility(View.GONE);
+        onNoAd.run();
     }
 
     private void startShimmer() {

@@ -25,11 +25,15 @@ import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
 
 import com.apkglobal.test.MainActivity;
 import com.apkglobal.test.R;
+import com.apkglobal.test.ads.AdsInitializer;
 import com.apkglobal.test.ads.BannerAdController;
+import com.apkglobal.test.ads.ConsentManager;
 import com.apkglobal.test.ads.NativeAdController;
 import com.google.android.gms.ads.AdSize;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -38,6 +42,9 @@ import java.util.Map;
  * <p>Layout of the scrolling list (top to bottom): title, subtitle, then the option cards with
  * the ads inserted where the screen's {@link ScreenSpec} says. The native ad is always followed
  * directly by the Continue button. A fixed banner sits at the bottom of every screen.
+ *
+ * <p>Ads are only requested once the UMP consent flow allows it (gathered on step 1, every
+ * launch). Until then the ad slots show same-size loading skeletons.
  */
 public abstract class BaseSelectionActivity extends AppCompatActivity {
 
@@ -45,9 +52,14 @@ public abstract class BaseSelectionActivity extends AppCompatActivity {
     private static final long CONTINUE_DEBOUNCE_MS = 800;
 
     private final Map<String, View> optionViews = new LinkedHashMap<>();
+    /** Ad loads that wait for consent; run once by {@link #attachAdsIfAllowed()}. */
+    private final List<Runnable> pendingAdLoads = new ArrayList<>();
+    private final List<View> inListAdSlots = new ArrayList<>();
     private ScreenSpec spec;
+    private ConsentManager consentManager;
     private String selectedKey;
     private AdSize bannerSize;
+    private boolean adsAttached;
     private long lastContinueClick;
 
     /** Describes this screen: texts, options, ad positions and the next screen. */
@@ -69,13 +81,83 @@ public abstract class BaseSelectionActivity extends AppCompatActivity {
         }
         selectedKey = isKnownOption(saved) ? saved : spec.options.get(0).key;
 
+        // Banner slots sit ad_padding_h from the screen edges and frame the ad with banner_frame_padding.
         bannerSize = BannerAdController.adaptiveSize(this,
-                getResources().getDimensionPixelSize(R.dimen.ad_padding_h));
+                getResources().getDimensionPixelSize(R.dimen.ad_padding_h)
+                        + getResources().getDimensionPixelSize(R.dimen.banner_frame_padding));
         buildList();
         select(selectedKey);
 
-        BannerAdController.attach(this, findViewById(R.id.bottom_banner_slot),
-                getString(R.string.ad_unit_banner), bannerSize);
+        FrameLayout bottomSlot = findViewById(R.id.bottom_banner_slot);
+        fixBannerSlotHeight(bottomSlot);
+        pendingAdLoads.add(() -> BannerAdController.attach(this, bottomSlot,
+                getString(R.string.ad_unit_banner), bannerSize, () -> bottomSlot.setVisibility(View.GONE)));
+
+        consentManager = ConsentManager.getInstance(this);
+        attachAdsIfAllowed(); // consent from a previous session
+        if (spec.step == 1) {
+            // Refresh consent on every launch (and show the form if required) on the first screen.
+            consentManager.gatherConsent(this, error -> {
+                if (isFinishing() || isDestroyed()) {
+                    return;
+                }
+                attachAdsIfAllowed();
+                if (!adsAttached) {
+                    hideAllAdSlots();
+                }
+                updatePrivacyOptions();
+            });
+        } else if (!adsAttached) {
+            hideAllAdSlots();
+        }
+        updatePrivacyOptions();
+    }
+
+    private void attachAdsIfAllowed() {
+        if (adsAttached || isFinishing() || isDestroyed() || !consentManager.canRequestAds()) {
+            return;
+        }
+        adsAttached = true;
+        AdsInitializer.initialize(this);
+        for (Runnable load : pendingAdLoads) {
+            load.run();
+        }
+        pendingAdLoads.clear();
+    }
+
+    /** No ads can be requested at all (no consent): remove every ad slot. */
+    private void hideAllAdSlots() {
+        findViewById(R.id.bottom_banner_slot).setVisibility(View.GONE);
+        for (View slot : inListAdSlots) {
+            hideAdSlot(slot);
+        }
+    }
+
+    /**
+     * Gives up an in-list ad slot without moving anything the user can see: if the slot is not
+     * laid out yet or is entirely below the visible part of the list it is removed (GONE);
+     * otherwise it keeps its space (INVISIBLE), so content - and other ads - never jump under a finger.
+     */
+    private void hideAdSlot(View slot) {
+        if (!slot.isLaidOut()) {
+            slot.setVisibility(View.GONE);
+            return;
+        }
+        View scroll = findViewById(R.id.scroll);
+        View container = findViewById(R.id.options_container);
+        int slotTopInScroll = container.getTop() + slot.getTop();
+        boolean belowViewport = slotTopInScroll >= scroll.getScrollY() + scroll.getHeight();
+        slot.setVisibility(belowViewport ? View.GONE : View.INVISIBLE);
+    }
+
+    private void updatePrivacyOptions() {
+        View link = findViewById(R.id.privacy_options);
+        boolean required = consentManager.isPrivacyOptionsRequired();
+        link.setVisibility(required ? View.VISIBLE : View.GONE);
+        link.setOnClickListener(required ? v -> consentManager.showPrivacyOptionsForm(this, error -> {
+            // Consent may have changed: allow ads now if the user just accepted.
+            attachAdsIfAllowed();
+        }) : null);
     }
 
     @Override
@@ -157,7 +239,9 @@ public abstract class BaseSelectionActivity extends AppCompatActivity {
     private void addNativeAdWithContinue(LinearLayout container, LayoutInflater inflater) {
         FrameLayout nativeSlot = (FrameLayout) inflater.inflate(R.layout.view_native_ad_slot, container, false);
         container.addView(nativeSlot, marginParams(0, topSpacing(container)));
-        NativeAdController.attach(this, nativeSlot, getString(R.string.ad_unit_native));
+        inListAdSlots.add(nativeSlot);
+        pendingAdLoads.add(() -> NativeAdController.attach(this, nativeSlot,
+                getString(R.string.ad_unit_native), () -> hideAdSlot(nativeSlot)));
 
         View continueButton = inflater.inflate(R.layout.view_continue_button, container, false);
         continueButton.setOnClickListener(v -> onContinue());
@@ -170,7 +254,17 @@ public abstract class BaseSelectionActivity extends AppCompatActivity {
     private void addInlineBanner(LinearLayout container, LayoutInflater inflater) {
         FrameLayout bannerSlot = (FrameLayout) inflater.inflate(R.layout.view_banner_ad_slot, container, false);
         container.addView(bannerSlot, marginParams(0, topSpacing(container)));
-        BannerAdController.attach(this, bannerSlot, getString(R.string.ad_unit_banner), bannerSize);
+        fixBannerSlotHeight(bannerSlot);
+        inListAdSlots.add(bannerSlot);
+        pendingAdLoads.add(() -> BannerAdController.attach(this, bannerSlot,
+                getString(R.string.ad_unit_banner), bannerSize, () -> hideAdSlot(bannerSlot)));
+    }
+
+    /** Same height for every banner slot, set before any ad loads (BannerAdController keeps it). */
+    private void fixBannerSlotHeight(View slot) {
+        ViewGroup.LayoutParams params = slot.getLayoutParams();
+        params.height = bannerSize.getHeightInPixels(this) + slot.getPaddingTop() + slot.getPaddingBottom();
+        slot.setLayoutParams(params);
     }
 
     private void select(String key) {

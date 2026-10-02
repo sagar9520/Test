@@ -17,13 +17,16 @@
     <dimen name="continue_height">52dp</dimen>
     <dimen name="continue_radius">26dp</dimen>
 
-    <!-- Native ad (fixed size, matches the reference) -->
+    <!-- Native ad (~270dp tall like the reference video). The loading skeleton uses the same
+         dimensions and text styles, so the Continue button below it never jumps. -->
     <dimen name="ad_card_radius">16dp</dimen>
     <dimen name="native_icon_size">48dp</dimen>
-    <dimen name="native_media_height">120dp</dimen>
-    <dimen name="native_cta_height">44dp</dimen>
+    <dimen name="native_header_height">52dp</dimen>
+    <dimen name="native_media_height">122dp</dimen>
+    <dimen name="native_cta_height">46dp</dimen>
 
-    <!-- Banner ad card -->
+    <!-- Banner ad card. The ad sits inside the rounded card with a small frame (never clipped). -->
     <dimen name="banner_card_radius">12dp</dimen>
-    <dimen name="banner_placeholder_height">64dp</dimen>
+    <dimen name="banner_frame_padding">4dp</dimen>
+    <dimen name="banner_placeholder_height">68dp</dimen>
 </resources>

@@ -14,7 +14,7 @@ import androidx.core.content.ContextCompat;
 import com.apkglobal.test.R;
 
 /** Onboarding progress: a track with one dot per step, filled up to the current step. */
-public class StepIndicatorView extends View {
+public final class StepIndicatorView extends View {
 
     private final Paint trackPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Paint progressPaint = new Paint(Paint.ANTI_ALIAS_FLAG);

@@ -24,22 +24,20 @@ import com.google.android.gms.ads.LoadAdError;
 /**
  * Loads an anchored adaptive banner into a slot (view_banner_ad_slot.xml).
  * Every banner on a screen uses the same {@link AdSize}, and the slot height is fixed to it
- * before loading, so the in-list banners match the bottom banner exactly and nothing jumps.
+ * (plus the slot's frame padding) before loading, so the in-list banners match the bottom banner
+ * exactly and nothing jumps when the ad arrives.
  */
 public final class BannerAdController implements DefaultLifecycleObserver {
 
-    private final FrameLayout slot;
     private final AdView adView;
     private boolean loaded;
     private boolean destroyed;
 
-    private BannerAdController(AppCompatActivity activity, FrameLayout slot, String adUnitId, AdSize adSize) {
-        this.slot = slot;
-
+    private BannerAdController(AppCompatActivity activity, FrameLayout slot, String adUnitId,
+                               AdSize adSize, Runnable onNoAd) {
         ViewGroup.LayoutParams params = slot.getLayoutParams();
-        params.height = adSize.getHeightInPixels(activity);
+        params.height = adSize.getHeightInPixels(activity) + slot.getPaddingTop() + slot.getPaddingBottom();
         slot.setLayoutParams(params);
-        slot.setClipToOutline(true);
 
         adView = new AdView(activity);
         adView.setAdUnitId(adUnitId);
@@ -51,7 +49,7 @@ public final class BannerAdController implements DefaultLifecycleObserver {
                     return;
                 }
                 loaded = true;
-                View placeholder = BannerAdController.this.slot.findViewById(R.id.banner_placeholder);
+                View placeholder = slot.findViewById(R.id.banner_placeholder);
                 if (placeholder != null) {
                     placeholder.setVisibility(View.GONE);
                 }
@@ -59,9 +57,9 @@ public final class BannerAdController implements DefaultLifecycleObserver {
 
             @Override
             public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                // A failed refresh keeps the previous ad; only collapse if nothing was ever shown.
+                // A failed refresh keeps the previous ad; only give up the slot if nothing was ever shown.
                 if (!destroyed && !loaded) {
-                    BannerAdController.this.slot.setVisibility(View.GONE);
+                    onNoAd.run();
                 }
             }
         });
@@ -69,10 +67,14 @@ public final class BannerAdController implements DefaultLifecycleObserver {
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
     }
 
-    /** Starts loading immediately; the controller follows the activity lifecycle by itself. */
+    /**
+     * Starts loading immediately; the controller follows the activity lifecycle by itself.
+     *
+     * @param onNoAd called on the main thread if no ad could be loaded for this slot
+     */
     public static BannerAdController attach(AppCompatActivity activity, FrameLayout slot,
-                                            String adUnitId, AdSize adSize) {
-        BannerAdController controller = new BannerAdController(activity, slot, adUnitId, adSize);
+                                            String adUnitId, AdSize adSize, Runnable onNoAd) {
+        BannerAdController controller = new BannerAdController(activity, slot, adUnitId, adSize, onNoAd);
         activity.getLifecycle().addObserver(controller);
         controller.adView.loadAd(new AdRequest.Builder().build());
         return controller;
@@ -80,10 +82,10 @@ public final class BannerAdController implements DefaultLifecycleObserver {
 
     /**
      * One adaptive size for every banner on the screen: the window width (minus side system bars /
-     * cutouts) minus the ad side margins, i.e. the width the bottom banner and the in-list
-     * banners occupy. Works before layout, so the slot height can be fixed up front.
+     * cutouts) minus the horizontal space around the ad, i.e. the inner width of the banner slots.
+     * Works before layout, so the slot height can be fixed up front.
      */
-    public static AdSize adaptiveSize(Activity activity, int horizontalMarginPx) {
+    public static AdSize adaptiveSize(Activity activity, int horizontalInsetPx) {
         int windowWidthPx;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             WindowMetrics metrics = activity.getWindowManager().getCurrentWindowMetrics();
@@ -94,7 +96,7 @@ public final class BannerAdController implements DefaultLifecycleObserver {
             windowWidthPx = activity.getResources().getDisplayMetrics().widthPixels;
         }
         float density = activity.getResources().getDisplayMetrics().density;
-        int widthDp = (int) ((windowWidthPx - 2 * horizontalMarginPx) / density);
+        int widthDp = (int) ((windowWidthPx - 2 * horizontalInsetPx) / density);
         return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(activity, widthDp);
     }
 

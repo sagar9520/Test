@@ -18,7 +18,7 @@
         <item name="colorControlHighlight">@color/ripple_teal</item>
         <item name="android:windowBackground">@color/page_bg_top</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/nav_bar_scrim</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:fontFamily">@font/poppins_regular</item>
     </style>
@@ -98,7 +98,7 @@
 
     <style name="Xray.Ad.Headline" parent="">
         <item name="android:fontFamily">@font/poppins_semibold</item>
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:maxLines">1</item>
@@ -107,8 +107,9 @@
 
     <style name="Xray.Ad.Meta" parent="">
         <item name="android:fontFamily">@font/poppins_regular</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">11.5sp</item>
         <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:includeFontPadding">false</item>
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
     </style>
@@ -131,6 +132,14 @@
     <style name="Xray.Ad.Skeleton" parent="">
         <item name="android:background">@drawable/bg_skeleton</item>
         <item name="android:importantForAccessibility">no</item>
+    </style>
+
+    <style name="Xray.Text.Link" parent="">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/brand_teal_dark</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
     </style>
 
 </resources>

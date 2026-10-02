@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    Banner ad slot. BannerAdController fixes its height to the adaptive banner height (so the
-    in-list banners and the bottom banner are exactly the same size) and swaps the placeholder
-    for the AdView once an ad is loaded.
+    Banner ad slot. BannerAdController fixes its height to the adaptive banner height plus this
+    frame padding (so the in-list banners and the bottom banner are exactly the same size) and
+    shows the AdView over the placeholder once an ad is loaded. The ad is framed by the padding,
+    never clipped, so its corners (AdChoices / close icons) stay intact.
 -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/banner_slot"
     android:layout_width="match_parent"
     android:layout_height="@dimen/banner_placeholder_height"
-    android:background="@drawable/bg_banner_card">
+    android:background="@drawable/bg_banner_card"
+    android:padding="@dimen/banner_frame_padding">
 
     <LinearLayout
         android:id="@+id/banner_placeholder"

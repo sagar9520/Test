@@ -30,6 +30,9 @@
     <color name="ripple_teal">#260FB5A3</color>
     <color name="ripple_on_brand">#40FFFFFF</color>
     <color name="ripple_neutral">#140F1B2D</color>
+    <!-- API 24-25 can't draw dark navigation icons, so the nav bar keeps a dark scrim there
+         (transparent from API 26, see values-v26). -->
+    <color name="nav_bar_scrim">#801B1B1B</color>
 
     <!-- Ads -->
     <color name="ad_surface">#EEF3F8</color>

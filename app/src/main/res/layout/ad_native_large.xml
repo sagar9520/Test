@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    Native advanced ad, styled after the reference video:
-    "Ad" badge, icon + headline + advertiser + body, 120dp media, full-width call to action.
-    The AdChoices icon is placed by the SDK in the top-right corner (kept free on purpose).
+    Native advanced ad, sized after the reference video (~270dp):
+    "Ad" badge, icon + headline + advertiser + body, 122dp media, full-width call to action.
+    The SDK draws the AdChoices icon in the top corner opposite the "Ad" badge
+    (top-right in LTR, top-left in RTL - see NativeAdController).
+    ad_native_placeholder.xml mirrors these dimensions exactly.
 -->
 <com.google.android.gms.ads.nativead.NativeAdView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -15,7 +17,10 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bg_ad_card"
         android:orientation="vertical"
-        android:padding="12dp">
+        android:paddingStart="12dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="8dp">
 
         <TextView
             android:id="@+id/ad_badge"
@@ -26,8 +31,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="6dp"
             android:gravity="center_vertical"
+            android:minHeight="@dimen/native_header_height"
             android:orientation="horizontal">
 
             <ImageView
@@ -56,7 +62,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginTop="1dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -80,7 +86,6 @@
                     style="@style/Xray.Ad.Meta"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="1dp"
                     tools:text="Experience gripping short series with a special ₹1 offer" />
             </LinearLayout>
         </LinearLayout>
@@ -89,7 +94,7 @@
             android:id="@+id/ad_media"
             android:layout_width="match_parent"
             android:layout_height="@dimen/native_media_height"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="7dp"
             android:background="@drawable/bg_ad_media" />
 
         <Button
@@ -97,7 +102,7 @@
             style="@style/Xray.Ad.CallToAction"
             android:layout_width="match_parent"
             android:layout_height="@dimen/native_cta_height"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="7dp"
             tools:text="Subscribe" />
 
     </LinearLayout>

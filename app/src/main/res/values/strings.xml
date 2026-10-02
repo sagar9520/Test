@@ -12,6 +12,9 @@
     <string name="ad_sponsored">Sponsored</string>
     <string name="ad_sponsored_separator"> • Sponsored</string>
     <string name="ad_loading">Loading ad…</string>
+    <!-- One blank line: skeleton text rows take the real line height of the ad text. -->
+    <string name="skeleton_line" translatable="false">" "</string>
+    <string name="privacy_options">Privacy options</string>
 
     <!-- 1/5 Select Language -->
     <string name="language_title">Select Language</string>
